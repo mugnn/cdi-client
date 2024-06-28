@@ -2,3 +2,39 @@
   height: 50vmin;
   width: 50vmin;
 }
+
+#latest_update {
+  padding-top: 2vmin;
+  color: var(--text-color);
+  font-family: var(--default-font);
+  font-weight: 500;
+}
+
+.subtitles {
+  color: var(--text-color);
+  font-family: var(--default-font);
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vmin;
+}
+
+.icon {
+  width: 1.2vmin;
+  height: 1.2vmin;
+  border-radius: 0.6vmin;
+}
+
+.new {
+  background-color: rgb(12, 120, 220);
+}
+
+.progress {
+  background-color: rgb(10, 218, 98);
+}
+
+.pending {
+  background-color: rgb(255, 205, 86);
+}

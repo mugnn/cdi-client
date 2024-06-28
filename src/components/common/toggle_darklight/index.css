@@ -1,7 +1,18 @@
 #toggle_icon {
+  height: 2vmin;
+}
+
+#background_toggle_darklight {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 2vmin;
   margin: 2vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3vmin;
+  width: 3vmin;
+  border-radius: 1.5vmin;
+  background-color: var(--text-color);
 }

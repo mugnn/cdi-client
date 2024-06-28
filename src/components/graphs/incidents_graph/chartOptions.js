@@ -1,15 +1,13 @@
-
-
 export const chartOptions = {
   responsive: true,
   plugins: {
     legend: {
-      display: true,
+      display: false,
       position: "bottom",
       labels: {
         color: "#fff",
         font: {
-          size: 12,
+          size: 15,
           family: "'Arial', sans-serif",
           weight: "bold",
         },

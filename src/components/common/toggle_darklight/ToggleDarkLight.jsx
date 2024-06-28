@@ -14,13 +14,15 @@ const ToggleDarkLight = () => {
   };
 
   return (
-    <img
-      src={hide ? moon : sun}
-      alt="toggle image"
-      id="toggle_icon"
+    <div id="background_toggle_darklight" 
       onClick={toggle}
-      style={{ cursor: "pointer" }}
-    />
+      style={{ cursor: "pointer", userSelect: "none" }}>
+      <img
+        src={hide ? moon : sun}
+        alt="toggle image"
+        id="toggle_icon"
+      />
+    </div>
   );
 };
 
