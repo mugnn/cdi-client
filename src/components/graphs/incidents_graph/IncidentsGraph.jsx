@@ -11,7 +11,6 @@ import "chart.js/auto";
 const IncidentGraph = () => {
   const { theme } = useTheme();
   const [dataValues, setDataValues] = useState([]);
-  const [newIncident, setNewIncident] = useState(0);
   const getIncident = new GetIncident();
 
   const [chartData, setChartData] = useState({
@@ -58,7 +57,7 @@ const IncidentGraph = () => {
   }, [theme]);
 
   useEffect(() => {
-    let audio = new Audio('/audio/new_incident.mp3');
+    let audio = new Audio("/audio/new_incident.mp3");
 
     const formatISODate = (isoString) => {
       const date = new Date(isoString);
@@ -74,27 +73,39 @@ const IncidentGraph = () => {
       return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     };
 
+    const verifyNewCall = (c, p) => {
+      let last = c.at(-1);
+      let find = false;
+
+      for (let n of p) {
+        find = (n === last);
+      }
+
+      if (!find) {
+        audio.play()
+      }
+    };
+
     const fetchData = async () => {
       try {
-        const values = await getIncident.getData();
+        const res = await getIncident.getData();
+        const currentValues = [res[0].new, res[0].progress, res[0].pending];
         setChartData((prevData) => ({
           ...prevData,
           datasets: [
             {
               ...prevData.datasets[0],
-              data: [values.new, values.progress, values.pending],
+              data: currentValues,
             },
           ],
         }));
-        setDataValues([
-          values.new,
-          values.progress,
-          values.pending,
-          formatISODate(values.date),
-        ]);
-        if (values.new > newIncident) {
-          audio.play();
-          setNewIncident(values.new);
+        setDataValues([...currentValues, formatISODate(res[0].date)]);
+
+        let current = Array.from(res[0].inline);
+        let previous = Array.from(res[1].inline);
+
+        if (current.length > 0 && previous.length > 0) {
+          verifyNewCall(current, previous);
         }
       } catch (e) {
         console.error(e);
