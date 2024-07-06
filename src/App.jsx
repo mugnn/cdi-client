@@ -1,7 +1,8 @@
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { ThemeProvider } from "./contexts/Theme/ThemeContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ToggleDarkLight from "./components/common/toggle_darklight/ToggleDarkLight";
 import './index.css'
+import { IncidentsCountProvider } from "./contexts/IncidentCount/IncidentsCountContext";
 
 const App = () => (
   <ThemeProvider>
@@ -13,7 +14,9 @@ const Content = () => {
   return (
     <div>
       <div className="page">
-        <Dashboard />
+        <IncidentsCountProvider>
+          <Dashboard />
+        </IncidentsCountProvider>
         <ToggleDarkLight />
       </div>
     </div>

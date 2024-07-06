@@ -2,7 +2,7 @@ import moon from "./moon.svg";
 import sun from "./sun.svg";
 import "./index.css";
 import { useState } from "react";
-import { useTheme } from "../../../contexts/ThemeContext";
+import { useTheme } from "../../../contexts/Theme/ThemeContext";
 
 const ToggleDarkLight = () => {
   const [hide, setHide] = useState(false);

@@ -1,9 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import GetIncident from "../services/GetIncidents";
+import { chartOptions } from "./chartOptions";
+import { useTheme } from "../Theme/ThemeContext";
+import GetIncident from "../../services/GetIncidents";
 
 const IncidentsCountContext = createContext();
 
-export const IncidentsProvider = ({ children }) => {
+export const IncidentsCountProvider = ({ children }) => {
+  const { theme } = useTheme();
   const getIncident = new GetIncident();
   const [dataValues, setDataValues] = useState([]);
   const [chartData, setChartData] = useState({
@@ -22,6 +25,32 @@ export const IncidentsProvider = ({ children }) => {
       },
     ],
   });
+
+  useEffect(() => {
+    if (theme === "light") {
+      setChartData((prevData) => ({
+        ...prevData,
+        datasets: [
+          {
+            ...prevData.datasets[0],
+            borderColor: "#ffffff",
+          },
+        ],
+      }));
+      chartOptions.plugins.legend.labels.color = "#000000";
+    } else {
+      setChartData((prevData) => ({
+        ...prevData,
+        datasets: [
+          {
+            ...prevData.datasets[0],
+            borderColor: "#1b1a20",
+          },
+        ],
+      }));
+      chartOptions.plugins.legend.labels.color = "#ffffff";
+    }
+  }, [theme]);
 
   useEffect(() => {
     let audio = new Audio("/audio/new_incident.mp3");
@@ -87,8 +116,10 @@ export const IncidentsProvider = ({ children }) => {
   }, []);
 
   return(
-    <IncidentsCountContext.Provider value={{ dataValues, chartData }}>
+    <IncidentsCountContext.Provider value={{ dataValues, chartData, chartOptions }}>
       { children }
     </IncidentsCountContext.Provider>
   )
 };
+
+export const IncidentsCount = () => useContext(IncidentsCountContext);
