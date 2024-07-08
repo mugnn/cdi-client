@@ -11,17 +11,20 @@
 
 .light {
   --bg-color: #ffffff;
-  --text-color: #000000 ;
+  --sec-color: #1b1a20;
+  --text-color: #000000;
 }
 
 .dark {
   --bg-color: #1b1a20;
+  --sec-color: #313035;
   --text-color: #ffffff;
 }
 
 .page {
   height: 100vh;
   display: flex;
+  background-color: var(--bg-color);
 }
 
 #toggle_darklight {

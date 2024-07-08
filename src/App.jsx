@@ -1,26 +1,30 @@
-import { ThemeProvider } from "./contexts/Theme/ThemeContext";
-import Dashboard from "./pages/dashboard/Dashboard";
 import ToggleDarkLight from "./components/common/toggle_darklight/ToggleDarkLight";
+import DashboardPage from "./pages/pre_renders/DashboardPage";
+import Incidents from "./pages/incidents/Incidents";
+import Nav from "./components/common/nav/Nav";
+import { ThemeProvider } from "./contexts/Theme/ThemeContext";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css'
-import { IncidentsCountProvider } from "./contexts/IncidentCount/IncidentsCountContext";
+
+const Content = () => {
+  return (
+    <div className="page">
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={ <DashboardPage /> } />
+          <Route path="/incidents" element={ <Incidents /> } />
+        </Routes>
+        <ToggleDarkLight />
+      </BrowserRouter>
+    </div>
+  );
+};
 
 const App = () => (
   <ThemeProvider>
     <Content />
   </ThemeProvider>
 );
-
-const Content = () => {
-  return (
-    <div>
-      <div className="page">
-        <IncidentsCountProvider>
-          <Dashboard />
-        </IncidentsCountProvider>
-        <ToggleDarkLight />
-      </div>
-    </div>
-  );
-};
 
 export default App;

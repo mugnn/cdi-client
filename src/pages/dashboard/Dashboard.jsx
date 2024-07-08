@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <div className="page dashboard">
       <IncidentGraph dataValues={dataValues} chartData={chartData} chartOptions={chartOptions} />
-      <ServiceLevelGraph />
+      {/* <ServiceLevelGraph /> */}
     </div>
   )
 }

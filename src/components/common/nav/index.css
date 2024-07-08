@@ -1,0 +1,27 @@
+.nav_box {
+  display: flex;
+  height: 100vh;
+  margin-left: 2vmin;
+  justify-content: start;
+  align-items: center;
+}
+.nav_component {
+  background-color: var(--sec-color);
+  box-shadow: rgb(0, 0, 0, 0.4) 0px 0px 10px;
+  height: 90vh;
+  width: 5vmin;
+  border-radius: 1vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 2vmin;
+  transition: all 0.1s ease-in-out;
+}
+.nav_icon {
+  height: 2vmin;
+}
+#aton_logo {
+  margin: 1vmin 1vmin 2vmin 1vmin;
+  height: 3vmin;
+}

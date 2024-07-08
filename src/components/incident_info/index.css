@@ -1,0 +1,25 @@
+
+.incident_info_component {
+  width: 80vw;
+  height: 4vmin;
+  background-color: var(--sec-color);
+  border-radius: 1vmin;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.incident_info_box {
+  display: flex;
+  flex-direction: column;
+  gap: 1vmin;
+}
+
+.incident_info_subbox {
+  width: 10vw;
+  height: 4vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--default-font);
+}

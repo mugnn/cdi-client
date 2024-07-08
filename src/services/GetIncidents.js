@@ -12,6 +12,16 @@ class GetIncident {
       throw err;
     }
   }
+
+  async getInfoData() {
+    try {
+      const res = await axios.get("http://localhost:1298/api/incidents/info")
+      return res.data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }
 
 export default GetIncident;
