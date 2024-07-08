@@ -10,6 +10,7 @@ const IncidentInfobox = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getIncident.getInfoData();
+      data.sort((a, b) => a.sla - b.sla)
       setInfoData(data);
     };
 
@@ -18,6 +19,16 @@ const IncidentInfobox = () => {
 
   return (
     <div className="incident_info_box">
+      <div className="table_header">
+        <div className="incident_info_subbox header">Chamado</div>
+        <div className="incident_info_subbox header">KB</div>
+        <div className="incident_info_subbox header">Tempo Limite</div>
+        <div className="incident_info_subbox header">Analista</div>
+        <div className="incident_info_subbox header">Dispositivo</div>
+        <div className="incident_info_subbox header">Status</div>
+        <div className="incident_info_subbox header">Problema</div>
+        <div className="incident_info_subbox header l">SLA</div>
+      </div>
       {(() => {
         const incidentsList = [];
         for (let obj of infoData) {
