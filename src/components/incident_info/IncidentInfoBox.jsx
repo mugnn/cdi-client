@@ -29,22 +29,24 @@ const IncidentInfobox = () => {
         <div className="incident_info_subbox header">Problema</div>
         <div className="incident_info_subbox header l">SLA</div>
       </div>
-      {(() => {
-        const incidentsList = [];
-        for (let obj of infoData) {
-          incidentsList.push(<IncidentInfo 
-            inc={obj.inc}
-            kb={obj.kb}
-            limite={obj.limite}
-            analista={obj.analista}
-            dispositivo={obj.dispositivo}
-            status={obj.status}
-            problema={obj.problema}
-            sla={obj.sla}
-          />);
-        }
-        return incidentsList;
-      })()}
+      <div className="table_body">
+        {(() => {
+          const incidentsList = [];
+          for (let obj of infoData) {
+            incidentsList.push(<IncidentInfo 
+              inc={obj.inc}
+              kb={obj.kb}
+              limite={obj.limite}
+              analista={obj.analista}
+              dispositivo={obj.dispositivo}
+              status={obj.status}
+              problema={obj.problema}
+              sla={obj.sla}
+            />);
+          }
+          return incidentsList;
+        })()}
+      </div>
     </div>
   );
 };

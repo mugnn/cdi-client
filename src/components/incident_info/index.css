@@ -6,6 +6,7 @@
   color: white;
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid black;
 }
 
 .incident_info_box {
@@ -19,6 +20,8 @@
   align-items: center;
   justify-content: center;
   font-family: var(--default-font);
+  font-size: 1.5vmin;
+  border-right: 1px solid black;
 }
 
 .table_header {
@@ -30,6 +33,22 @@
   background-color: rgb(10, 218, 98);
   height: 6vmin;
   border: 1px solid black;
+  border-radius: 1vmin 1vmin 0 0;
+}
+
+.table_body {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.table_body::-webkit-scrollbar {
+  background: var(--bg-color);
+  width: 1vmin;
+}
+
+.table_body::-webkit-scrollbar-thumb {
+  background: var(--ter-color);
+  border-radius: 2vmin;
 }
 
 .header {
