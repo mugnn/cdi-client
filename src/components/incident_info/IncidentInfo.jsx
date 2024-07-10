@@ -8,6 +8,8 @@ import "./index.css";
 const IncidentInfo = (props) => {
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
+  const [problem, setProblem] = useState("");
+  const [mesa, setMesa] = useState("");
 
   useEffect(() => {
     const formatISODate = (isoString) => {
@@ -42,8 +44,19 @@ const IncidentInfo = (props) => {
       return n;
     }
 
+    if (props.mesa === "N3-SERVIDORES_OUTSOURCING_CFTV") {
+      setMesa("N3-SERVIDORES");
+    } else {
+      setMesa(props.mesa)
+    }
+
     setTime(formatISODate(props.limite))
     setName(formatName(props.analista));
+    if (props.problema.length > 30) {
+      setProblem(formatName(props.problema))
+    } else {
+      setProblem(props.problema)
+    }
   }, []);
 
   return (
@@ -52,11 +65,12 @@ const IncidentInfo = (props) => {
       <div className="incident_info_subbox">
         {props.kb ? "inserido" : "não inserido"}
       </div>
+      <div className="incident_info_subbox">{mesa}</div>
       <div className="incident_info_subbox">{time}</div>
       <div className="incident_info_subbox">{name}</div>
       <div className="incident_info_subbox">{props.dispositivo}</div>
       <div className="incident_info_subbox">{props.status}</div>
-      <div className="incident_info_subbox">{props.problema}</div>
+      <div className="incident_info_subbox">{problem}</div>
       <div
         className={
           props.sla <= 60

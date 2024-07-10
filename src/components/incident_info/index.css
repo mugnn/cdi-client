@@ -22,6 +22,17 @@
   font-family: var(--default-font);
   font-size: 1.5vmin;
   border-right: 1px solid black;
+  overflow: auto;
+}
+
+.incident_info_subbox::-webkit-scrollbar {
+  background: var(--sec-color);
+  height: 0.8vmin;
+}
+
+.incident_info_subbox::-webkit-scrollbar-thumb {
+  background: var(--ter-color);
+  border-radius: 2vmin;
 }
 
 .table_header {

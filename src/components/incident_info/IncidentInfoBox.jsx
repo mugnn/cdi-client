@@ -22,6 +22,7 @@ const IncidentInfobox = () => {
       <div className="table_header">
         <div className="incident_info_subbox header">Chamado</div>
         <div className="incident_info_subbox header">KB</div>
+        <div className="incident_info_subbox header">Mesa</div>
         <div className="incident_info_subbox header">Tempo Limite</div>
         <div className="incident_info_subbox header">Analista</div>
         <div className="incident_info_subbox header">Dispositivo</div>
@@ -36,6 +37,7 @@ const IncidentInfobox = () => {
             incidentsList.push(<IncidentInfo 
               inc={obj.inc}
               kb={obj.kb}
+              mesa={obj.mesa_atendimento}
               limite={obj.limite}
               analista={obj.analista}
               dispositivo={obj.dispositivo}
