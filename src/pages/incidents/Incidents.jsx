@@ -1,10 +1,13 @@
 import IncidentInfobox from '../../components/incident_info/IncidentInfoBox';
+import { IncidentInfoData } from '../../contexts/incidentInfo/IncidentInfo';
 import './index.css'
 
-const Incidents = (props) => {
+const Incidents = () => {
+  const { infoData } = IncidentInfoData()
+
   return (
     <div className="page incidents">
-      <IncidentInfobox />
+      <IncidentInfobox data={ infoData } />
     </div>
   )
 } 

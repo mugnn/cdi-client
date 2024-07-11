@@ -1,22 +1,7 @@
-import { useEffect, useState } from "react";
-import GetIncident from "../../services/GetIncidents";
-import "./index.css";
 import IncidentInfo from "./IncidentInfo";
+import "./index.css";
 
-const IncidentInfobox = () => {
-  const getIncident = new GetIncident();
-  const [infoData, setInfoData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getIncident.getInfoData();
-      data.sort((a, b) => a.sla - b.sla)
-      setInfoData(data);
-    };
-
-    fetchData();
-  }, []);
-
+const IncidentInfobox = (props) => {
   return (
     <div className="incident_info_box">
       <div className="table_header">
@@ -33,7 +18,7 @@ const IncidentInfobox = () => {
       <div className="table_body">
         {(() => {
           const incidentsList = [];
-          for (let obj of infoData) {
+          for (let obj of props.data) {
             incidentsList.push(<IncidentInfo 
               inc={obj.inc}
               kb={obj.kb}

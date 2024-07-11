@@ -1,10 +1,11 @@
 import ToggleDarkLight from "./components/common/toggle_darklight/ToggleDarkLight";
 import DashboardPage from "./pages/pre_renders/DashboardPage";
-import Incidents from "./pages/incidents/Incidents";
 import Nav from "./components/common/nav/Nav";
 import { ThemeProvider } from "./contexts/Theme/ThemeContext";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css'
+import IncidentsPage from "./pages/pre_renders/IncidentsPage";
+import { IncidentInfoProvider } from "./contexts/incidentInfo/IncidentInfo";
 
 const Content = () => {
   return (
@@ -13,7 +14,7 @@ const Content = () => {
         <Nav />
         <Routes>
           <Route path="/" element={ <DashboardPage /> } />
-          <Route path="/incidents" element={ <Incidents /> } />
+          <Route path="/incidents" element={ <IncidentsPage /> } />
         </Routes>
         <ToggleDarkLight />
       </BrowserRouter>
@@ -23,7 +24,9 @@ const Content = () => {
 
 const App = () => (
   <ThemeProvider>
-    <Content />
+    <IncidentInfoProvider>
+      <Content />
+    </IncidentInfoProvider>
   </ThemeProvider>
 );
 

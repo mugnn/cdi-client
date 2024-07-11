@@ -1,5 +1,5 @@
-import Dashboard from "../dashboard/Dashboard";
 import { IncidentsCountProvider } from "../../contexts/IncidentCount/IncidentsCountContext";
+import Dashboard from "../dashboard/Dashboard";
 
 const DashboardPage = () => {
   return (
