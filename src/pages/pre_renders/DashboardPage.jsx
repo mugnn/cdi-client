@@ -1,10 +1,13 @@
+import { AnalistCountProvider } from "../../contexts/AnalistsCount/AnalistsCount";
 import { IncidentsCountProvider } from "../../contexts/IncidentCount/IncidentsCountContext";
 import Dashboard from "../dashboard/Dashboard";
 
 const DashboardPage = () => {
   return (
     <IncidentsCountProvider>
-      <Dashboard />
+      <AnalistCountProvider>
+        <Dashboard />
+      </AnalistCountProvider>
     </IncidentsCountProvider>
   )
 }

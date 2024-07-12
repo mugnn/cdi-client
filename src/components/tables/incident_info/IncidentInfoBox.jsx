@@ -19,7 +19,7 @@ const IncidentInfobox = (props) => {
         {(() => {
           const incidentsList = [];
           for (let obj of props.data) {
-            incidentsList.push(<IncidentInfo 
+            incidentsList.push(<IncidentInfo
               inc={obj.inc}
               kb={obj.kb}
               mesa={obj.mesa_atendimento}

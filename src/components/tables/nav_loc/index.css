@@ -1,0 +1,22 @@
+
+.nav_loc {
+  width: 80vw;
+  height: 4vmin;
+  background-color: var(--sec-color);
+  display: flex;
+  flex-direction: row;
+  border-radius: 0.8vmin;
+  box-shadow: rgb(0, 0, 0, 0.3) 0px 0px 10px;
+}
+
+.loc_route_button {
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--default-font);
+  font-size: 1.55vmin;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}

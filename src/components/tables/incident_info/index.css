@@ -81,3 +81,10 @@
 .green {
   background-color: rgb(10, 218, 98);
 }
+
+.dot {
+  margin-left: 1vmin;
+  height: 1vmin;
+  width: 1vmin;
+  border-radius: 1vmin;
+}

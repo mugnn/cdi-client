@@ -38,3 +38,19 @@
 .pending {
   background-color: rgb(255, 205, 86);
 }
+
+.subtitles_box_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.6vmin 0 0.6vmin;
+}
+
+.total_data {
+  display: flex;
+  flex-direction: column;
+}
+
+#total_number {
+  font-size: 3.5vmin;
+  font-weight: 700;
+}
