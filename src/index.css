@@ -24,7 +24,6 @@
 }
 
 .page {
-  height: 100vh;
   display: flex;
   background-color: var(--bg-color);
 }

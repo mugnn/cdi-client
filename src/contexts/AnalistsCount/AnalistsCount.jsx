@@ -6,11 +6,8 @@ import GetIncident from "../../services/GetIncidents";
 const AnalistCountContext = createContext();
 
 export const AnalistCountProvider = ({ children }) => {
-  const getIncident = new GetIncident();
   const { theme } = useTheme();
-
-  const [adataValues, setaDataValues] = useState(null);
-
+  const getIncident = new GetIncident();
   const [achartData, setaChartData] = useState({
     labels: [],
     datasets: [
@@ -49,6 +46,10 @@ export const AnalistCountProvider = ({ children }) => {
         }
         const labelsData = Object.keys(values)
         const analystData = Object.values(values)
+
+        for (let i = 0; i < analystData.length; i++) {
+          labelsData[i] += ": " + analystData[i];
+        }
 
         setaChartData((prevData) => ({
           labels: labelsData,
@@ -98,7 +99,7 @@ export const AnalistCountProvider = ({ children }) => {
   }, [theme]);
 
   return (
-    <AnalistCountContext.Provider value={{ adataValues, achartData, achartOptions }}>
+    <AnalistCountContext.Provider value={{ adataValues: null, achartData, achartOptions }}>
       { children }
     </AnalistCountContext.Provider>
   )

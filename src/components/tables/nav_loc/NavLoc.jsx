@@ -12,7 +12,7 @@ const NavLoc = (props) => {
         TODOS
       </div>
       <div className="loc_route_button" onClick={() => changeLoc('CENPES - IFO')}>
-        CENPES (IFO, IFO2)
+        CENPES (CIPD, IFO, IFO2)
       </div>
       <div className="loc_route_button" onClick={() => changeLoc('EDISEN - SNDO')}>
         EDISEN (SNDO)

@@ -21,6 +21,10 @@
 .nav_icon {
   height: 2vmin;
 }
+.ics_r {
+  height: 2.6vmin;
+  padding-left: 0.7vmin;
+}
 #aton_logo {
   margin: 1vmin 1vmin 2vmin 1vmin;
   height: 3vmin;

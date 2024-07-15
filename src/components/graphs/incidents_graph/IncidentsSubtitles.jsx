@@ -20,7 +20,7 @@ const IncidentsSubtitles = (props) => {
         </div>
         <div className="subtitles total_data">
           <p>Total:</p>
-          <p id="total_number">{props.data[0] + props.data[1] + props.data[2]}</p>
+          <p id="total_number">{(props.data[0] + props.data[1] + props.data[2]) + ""}</p>
         </div>
       </div>
       <p id="latest_update">Última atualização: {props.data[3]}</p>

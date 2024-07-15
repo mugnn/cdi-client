@@ -2,7 +2,7 @@ export const achartOptions = {
   responsive: true,
   plugins: {
     legend: {
-      display: false,
+      display: true,
       position: "bottom",
       labels: {
         color: "#fff",

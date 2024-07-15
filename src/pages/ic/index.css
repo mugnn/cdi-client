@@ -1,7 +1,7 @@
-.dashboard {
+.ic_page {
+  height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30vmin;
 }

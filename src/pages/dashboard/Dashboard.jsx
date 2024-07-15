@@ -11,8 +11,10 @@ const Dashboard = () => {
   return (
     <div className="page dashboard">
       <IncidentGraph dataValues={dataValues} chartData={chartData} chartOptions={chartOptions} />
-      <IncidentGraph dataValues={adataValues} chartData={achartData} chartOptions={achartOptions} />
-      {/* <ServiceLevelGraph /> */}
+      <div>
+        <IncidentGraph dataValues={adataValues} chartData={achartData} chartOptions={achartOptions} />
+        {/* <ServiceLevelGraph /> */}
+      </div>
     </div>
   )
 }

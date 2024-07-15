@@ -14,9 +14,6 @@ export const IncidentInfoProvider = ({ children }) => {
       const data = await getIncident.getInfoData();
       data.sort((a, b) => a.sla - b.sla);
       setInfoData(data);
-      if (locFilter === 'todos') {
-        setfilteredData(data)
-      }
     };
     fetchData();
 
@@ -26,17 +23,17 @@ export const IncidentInfoProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    changeFilter();
-  }, [locFilter]);
+    changeFilter(locFilter);
+  }, [locFilter, infoData]);
 
-  const changeFilter = () => {
-    switch (locFilter) {
+  const changeFilter = (loc) => {
+    switch (loc) {
       case "todos":
         setfilteredData(infoData);
         break;
       default:
         setfilteredData(
-          infoData.filter(item => item.localizacao === locFilter)
+          infoData.filter(item => item.localizacao === loc)
         );
         break;
     }

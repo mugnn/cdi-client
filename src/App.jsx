@@ -3,9 +3,12 @@ import DashboardPage from "./pages/pre_renders/DashboardPage";
 import Nav from "./components/common/nav/Nav";
 import { ThemeProvider } from "./contexts/Theme/ThemeContext";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css'
 import IncidentsPage from "./pages/pre_renders/IncidentsPage";
 import { IncidentInfoProvider } from "./contexts/incidentInfo/IncidentInfo";
+import { IncidentsCountProvider } from "./contexts/IncidentCount/IncidentsCountContext";
+import { AnalistCountProvider } from "./contexts/AnalistsCount/AnalistsCount";
+import IcPage from "./pages/ic/IcPage";
+import './index.css'
 
 const Content = () => {
   return (
@@ -15,6 +18,7 @@ const Content = () => {
         <Routes>
           <Route path="/" element={ <DashboardPage /> } />
           <Route path="/incidents" element={ <IncidentsPage /> } />
+          <Route path="/ics" element={ <IcPage /> } />
         </Routes>
         <ToggleDarkLight />
       </BrowserRouter>
@@ -25,7 +29,11 @@ const Content = () => {
 const App = () => (
   <ThemeProvider>
     <IncidentInfoProvider>
-      <Content />
+      <IncidentsCountProvider>
+        <AnalistCountProvider>
+          <Content />
+        </AnalistCountProvider>
+      </IncidentsCountProvider>
     </IncidentInfoProvider>
   </ThemeProvider>
 );
