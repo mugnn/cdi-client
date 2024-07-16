@@ -9,6 +9,7 @@ import { IncidentsCountProvider } from "./contexts/IncidentCount/IncidentsCountC
 import { AnalistCountProvider } from "./contexts/AnalistsCount/AnalistsCount";
 import IcPage from "./pages/ic/IcPage";
 import './index.css'
+import { IcsInfoProvider } from "./contexts/IcsInfo/IcsInfo";
 
 const Content = () => {
   return (
@@ -31,7 +32,9 @@ const App = () => (
     <IncidentInfoProvider>
       <IncidentsCountProvider>
         <AnalistCountProvider>
-          <Content />
+          <IcsInfoProvider>
+            <Content />
+          </IcsInfoProvider>
         </AnalistCountProvider>
       </IncidentsCountProvider>
     </IncidentInfoProvider>

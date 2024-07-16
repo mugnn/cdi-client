@@ -19,13 +19,23 @@
   transition: all 0.1s ease-in-out;
 }
 .nav_icon {
+  margin-top: 0.3vmin;
   height: 2vmin;
 }
 .ics_r {
   height: 2.6vmin;
-  padding-left: 0.7vmin;
+  padding: 0.65vmin 0 0 0.65vmin;
 }
 #aton_logo {
   margin: 1vmin 1vmin 2vmin 1vmin;
   height: 3vmin;
+}
+.selected_box {
+  height: 3.6vmin;
+  width: 3.6vmin;
+  border-radius: 1vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--qua-color);
 }

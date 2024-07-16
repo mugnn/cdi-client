@@ -5,5 +5,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: end;
+}
+
+#loc_title_incidents {
+  font-family: var(--default-font);
+  font-weight: 700;
+  font-size: 2vmin;
+  color: var(--text-color);
+}
+
+.page_header_incidents {
+  width: 81vw;
+  display: flex;
+  justify-content: start;
+  margin: 0 0 3vmin 2vmin;
+}
+
+.page_body_incidents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
   gap: 7vmin;
 }

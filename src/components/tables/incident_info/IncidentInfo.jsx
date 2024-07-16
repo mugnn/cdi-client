@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "../index.css";
 
 /* versão de visualização.
-  - será implementado uma versão completamente diferente onde os dados há distinção dos chamados por localidade.
   - parte estética do componente será mantida.
 */
 const IncidentInfo = (props) => {

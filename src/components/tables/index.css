@@ -1,6 +1,5 @@
 
 .incident_info_component {
-  width: 80vw;
   height: 5vmin;
   background-color: var(--sec-color);
   color: white;
@@ -15,7 +14,7 @@
 }
 
 .incident_info_subbox {
-  width: 10vw;
+  width: 9vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +36,6 @@
 
 .table_header {
   display: flex;
-  width: 80vw;
   flex-direction: row;
   color: black;
   font-weight: 700;

@@ -20,3 +20,15 @@
   cursor: pointer;
   color: white;
 }
+
+.__selected_loc {
+  background-color: var(--qua-color);
+}
+
+.l {
+  border-radius: 0.8vmin 0vmin 0vmin 0.8vmin;
+}
+
+.r {
+  border-radius: 0vmin 0.8vmin 0.8vmin 0vmin;
+}

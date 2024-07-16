@@ -44,7 +44,7 @@ export const IncidentInfoProvider = ({ children }) => {
   };
 
   return (
-    <IncidentInfoContext.Provider value={{ filteredData, changeLoc }}>
+    <IncidentInfoContext.Provider value={{ filteredData, changeLoc, locFilter }}>
       {children}
     </IncidentInfoContext.Provider>
   );
