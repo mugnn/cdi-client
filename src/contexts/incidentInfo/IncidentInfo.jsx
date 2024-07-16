@@ -7,6 +7,8 @@ export const IncidentInfoProvider = ({ children }) => {
   const getIncident = new GetIncident();
   const [infoData, setInfoData] = useState([]);
   const [filteredData, setfilteredData] = useState([]);
+  const [searchStack, setSearchStack] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
   const [locFilter, setLocFilter] = useState("todos");
 
   useEffect(() => {
@@ -32,9 +34,7 @@ export const IncidentInfoProvider = ({ children }) => {
         setfilteredData(infoData);
         break;
       default:
-        setfilteredData(
-          infoData.filter(item => item.localizacao === loc)
-        );
+        setfilteredData(infoData.filter((item) => item.localizacao === loc));
         break;
     }
   };
@@ -43,8 +43,46 @@ export const IncidentInfoProvider = ({ children }) => {
     setLocFilter(loc);
   };
 
+  const filterDataByKeyword = (searchTerm) => {
+    setSearchKey(searchTerm);
+
+    if (searchTerm === '') {
+      changeFilter(locFilter);
+    } else if (searchTerm.length < searchKey.length && searchStack.length > 1) {
+      setSearchStack((prevStack) => {
+        const newStack = [...prevStack];
+        newStack.pop();
+        setfilteredData(newStack[newStack.length - 1]);
+        return newStack;
+      });
+    } else {
+      const lowerCaseTerm = searchTerm.toLowerCase();
+      const newFilteredData = filteredData.filter((item) =>
+        Object.entries(item).some(([key, val]) => {
+          if (key === 'kb') {
+            const kbValue = val ? 'inserido' : 'não inserido';
+            return kbValue.includes(lowerCaseTerm);
+          }
+          if (key === 'pendencia' || key === 'url' || key === 'solicitante') {
+            return false;
+          }
+          return typeof val === 'string' && val.toLowerCase().includes(lowerCaseTerm);
+        })
+      );
+
+      setSearchStack((prevStack) => {
+        const newStack = [...prevStack, newFilteredData];
+        return newStack;
+      });
+
+      setfilteredData(newFilteredData);
+    }
+  };
+
   return (
-    <IncidentInfoContext.Provider value={{ filteredData, changeLoc, locFilter }}>
+    <IncidentInfoContext.Provider
+      value={{ filteredData, changeLoc, locFilter, filterDataByKeyword }}
+    >
       {children}
     </IncidentInfoContext.Provider>
   );

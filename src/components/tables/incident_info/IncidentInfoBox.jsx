@@ -28,9 +28,13 @@ const IncidentInfobox = (props) => {
               analista={obj.analista}
               dispositivo={obj.dispositivo}
               status={obj.status}
-              problema={obj.problema}
-              sla={obj.sla}
+              problema={obj.problema} 
+              url={obj.url} 
+              sla={obj.sla} 
             />);
+          }
+          if (incidentsList.length === 0) {
+            incidentsList.push(<p key={"no_data_key"} id="no_data_incident">Não há chamados para esta localidade.</p>)
           }
           return incidentsList;
         })()}

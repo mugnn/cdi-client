@@ -39,3 +39,6 @@
   justify-content: center;
   background-color: var(--qua-color);
 }
+.nav_button {
+  border-radius: 1vmin;
+}

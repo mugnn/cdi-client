@@ -55,7 +55,10 @@ const IncidentInfo = (props) => {
 
   return (
     <div className="incident_info_component">
-      <div className="incident_info_subbox">{props.inc}</div>
+      <a className="incident_info_subbox" href={props.url}>
+        {/* <div className="incident_info_subbox">{props.inc}</div> */}
+        {props.inc}
+      </a>
       <div className="incident_info_subbox">
         {props.kb ? "inserido" : "não inserido"}
         <div className={props.kb ? "green dot" : "red dot"} />

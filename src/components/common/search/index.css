@@ -1,0 +1,26 @@
+.common_search_component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vmin;
+}
+
+#inputbox_search_component {
+  border-radius: 2vmin;
+  background-color: var(--qua-color);
+  border: none;
+  height: 2.5vmin;
+  outline: none;
+  color: white;
+  padding-left: 1vmin;
+  box-shadow: rgb(0, 0, 0, 0.1) 0px 0px 10px;
+}
+
+#inputbox_search_component::placeholder {
+  font-family: var(--default-font);
+  color: white;
+}
+
+#common_icon {
+  height: 2.4vmin;
+}

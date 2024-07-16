@@ -22,6 +22,7 @@
   font-size: 1.5vmin;
   border-right: 1px solid black;
   overflow: auto;
+  color: white;
 }
 
 .incident_info_subbox::-webkit-scrollbar {
@@ -62,6 +63,7 @@
 
 .header {
   border-right: 1px solid black; 
+  color: black;
 }
 
 .l {
@@ -85,4 +87,13 @@
   height: 1vmin;
   width: 1vmin;
   border-radius: 1vmin;
+}
+
+#no_data_incident {
+  font-family: var(--default-font);
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 3vmin;
+  margin-top: 2vmin;
+  margin-left: 1vmin;
 }
