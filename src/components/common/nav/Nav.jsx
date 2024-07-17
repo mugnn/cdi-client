@@ -6,6 +6,8 @@ import incidents_light from './assets/incidents_light.svg';
 import incidents_dark from './assets/incidents_dark.svg';
 import search_ic_light from './assets/search_ic_light.svg'
 import search_ic_dark from './assets/search_ic_dark.svg'
+import archive_dark from './assets/archive_dark.svg';
+import archive_light from './assets/archive_light.svg';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../../contexts/Theme/ThemeContext';
 import './index.css';
@@ -46,6 +48,15 @@ const Nav = (props) => {
             <img 
                 alt='incidents'
                 src={ themeState ? incidents_light : incidents_dark }
+                className='nav_icon'
+            />
+          </Link>
+        </div>
+        <div className={currentLocation === '/archived' ? 'nav_button selected_box' : 'nav_button'}>
+          <Link to="/archived">
+            <img 
+                alt='archived'
+                src={ themeState ? archive_light : archive_dark }
                 className='nav_icon'
             />
           </Link>

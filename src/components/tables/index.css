@@ -14,6 +14,8 @@
 }
 
 .incident_info_subbox {
+  border-style: none;
+  outline: none;
   width: 9vw;
   display: flex;
   align-items: center;
@@ -40,6 +42,7 @@
   flex-direction: row;
   color: black;
   font-weight: 700;
+  width: fit-content;
   background-color: rgb(10, 218, 98);
   height: 6vmin;
   border: 1px solid black;
@@ -70,6 +73,11 @@
   border: none;
 }
 
+.__justify_input {
+  color: black;
+  width: 8.82vw;
+}
+
 .red {
   background-color: #EA9999;
 }
@@ -87,6 +95,11 @@
   height: 1vmin;
   width: 1vmin;
   border-radius: 1vmin;
+}
+
+#__submit_icon {
+  height: 2vmin;
+  padding-left: 2vmin;
 }
 
 #no_data_incident {

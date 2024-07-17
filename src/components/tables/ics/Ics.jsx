@@ -1,5 +1,5 @@
-import IcsDataComponent from './IcsDataComponent';
-import '../index.css'
+import IcsDataComponent from "./IcsDataComponent";
+import "../index.css";
 
 const IcsTable = (props) => {
   return (
@@ -15,20 +15,22 @@ const IcsTable = (props) => {
         {(() => {
           let icsDataComponents = [];
           for (let obj of props.data) {
-            icsDataComponents.push(<IcsDataComponent 
-              key={ obj.ic_code }
-              code={ obj.ic_code }
-              name={ obj.ic_name }
-              site={ obj.site }
-              suffix={ obj.suffix }
-              recurrences={ obj.recurrences } 
-            />)
+            icsDataComponents.push(
+              <IcsDataComponent
+                key={obj.ic_code}
+                code={obj.ic_code}
+                name={obj.ic_name}
+                site={obj.site}
+                suffix={obj.suffix}
+                recurrences={obj.recurrences}
+              />
+            );
           }
           return icsDataComponents;
         })()}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default IcsTable;

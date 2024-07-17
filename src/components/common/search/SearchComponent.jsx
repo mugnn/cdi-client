@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../../../contexts/Theme/ThemeContext";
-import search_light from "./assets/search_light.svg";
 import "./index.css";
 
 const SearchComponent = (props) => {

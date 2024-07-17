@@ -10,6 +10,8 @@ import { AnalistCountProvider } from "./contexts/AnalistsCount/AnalistsCount";
 import IcPage from "./pages/ic/IcPage";
 import './index.css'
 import { IcsInfoProvider } from "./contexts/IcsInfo/IcsInfo";
+import ArchivedIncidents from "./pages/archived_incidents/ArchivedIncidents";
+import { IncidentArchiveProvider } from "./contexts/ArchivedIncident/ArchivedIncident";
 
 const Content = () => {
   return (
@@ -18,6 +20,7 @@ const Content = () => {
         <Nav />
         <Routes>
           <Route path="/" element={ <DashboardPage /> } />
+          <Route path="/archived" element={ <ArchivedIncidents /> } />
           <Route path="/incidents" element={ <IncidentsPage /> } />
           <Route path="/ics" element={ <IcPage /> } />
         </Routes>
@@ -33,7 +36,9 @@ const App = () => (
       <IncidentsCountProvider>
         <AnalistCountProvider>
           <IcsInfoProvider>
-            <Content />
+            <IncidentArchiveProvider>
+              <Content />
+            </IncidentArchiveProvider>
           </IcsInfoProvider>
         </AnalistCountProvider>
       </IncidentsCountProvider>

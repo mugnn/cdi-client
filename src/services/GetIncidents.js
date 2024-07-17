@@ -22,6 +22,26 @@ class GetIncident {
       throw err;
     }
   }
+
+  async getArchivedData() {
+    try {
+      const res = await axios.get("http://localhost:1298/api/incidents/archived")
+      return res.data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async postReasonData(data) {
+    try {
+      const res = await axios.post("http://localhost:1298/api/incidents/reason", data);
+      return res.data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }
 
 export default GetIncident;
