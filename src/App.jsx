@@ -12,6 +12,7 @@ import './index.css'
 import { IcsInfoProvider } from "./contexts/IcsInfo/IcsInfo";
 import ArchivedIncidents from "./pages/archived_incidents/ArchivedIncidents";
 import { IncidentArchiveProvider } from "./contexts/ArchivedIncident/ArchivedIncident";
+import { ChakraProvider } from '@chakra-ui/react';
 
 const Content = () => {
   return (
@@ -31,19 +32,21 @@ const Content = () => {
 };
 
 const App = () => (
-  <ThemeProvider>
-    <IncidentInfoProvider>
-      <IncidentsCountProvider>
-        <AnalistCountProvider>
-          <IcsInfoProvider>
-            <IncidentArchiveProvider>
-              <Content />
-            </IncidentArchiveProvider>
-          </IcsInfoProvider>
-        </AnalistCountProvider>
-      </IncidentsCountProvider>
-    </IncidentInfoProvider>
-  </ThemeProvider>
+  <ChakraProvider>
+    <ThemeProvider>
+      <IncidentInfoProvider>
+        <IncidentsCountProvider>
+          <AnalistCountProvider>
+            <IcsInfoProvider>
+              <IncidentArchiveProvider>
+                <Content />
+              </IncidentArchiveProvider>
+            </IcsInfoProvider>
+          </AnalistCountProvider>
+        </IncidentsCountProvider>
+      </IncidentInfoProvider>
+    </ThemeProvider>
+  </ChakraProvider>
 );
 
 export default App;

@@ -16,6 +16,7 @@ export const IcsInfoProvider = ({ children }) => {
   const { theme } = useTheme();
   const [icsData, setIcsData] = useState([]);
   const [rawData, setRawData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchStack, setSearchStack] = useState([]);
   const [searchKey, setSearchKey] = useState("");
   const [chartData, setChartData] = useState({
@@ -61,11 +62,18 @@ export const IcsInfoProvider = ({ children }) => {
 
   useEffect(() => {
     const recieveData = async () => {
-      const payload = await getIcs.getData();
-      payload.sort((a, b) => b.recurrences - a.recurrences);
-      setIcsData(payload);
-      setRawData(payload);
-      setSearchStack([payload]);
+      setIsLoading(true);
+      try {
+        const payload = await getIcs.getData();
+        payload.sort((a, b) => b.recurrences - a.recurrences);
+        setIcsData(payload);
+        setRawData(payload);
+        setSearchStack([payload]);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     recieveData();
@@ -143,7 +151,7 @@ export const IcsInfoProvider = ({ children }) => {
   }, [rawData]);
 
   return (
-    <IcsInfoContext.Provider value={{ icsData, filterDataByKeyword, chartData, achartOptions }}>
+    <IcsInfoContext.Provider value={{ icsData, filterDataByKeyword, chartData, achartOptions, isLoading }}>
       {children}
     </IcsInfoContext.Provider>
   );

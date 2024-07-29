@@ -8,6 +8,7 @@ const AnalistCountContext = createContext();
 export const AnalistCountProvider = ({ children }) => {
   const { theme } = useTheme();
   const getIncident = new GetIncident();
+  const [isAnalistLoading, setIsAnalistLoading] = useState(true);
   const [achartData, setaChartData] = useState({
     labels: [],
     datasets: [
@@ -20,10 +21,12 @@ export const AnalistCountProvider = ({ children }) => {
           "rgb(255, 25, 86)",
           "rgb(99, 12, 200)",
           "rgb(131, 11, 123)",
-          "rgb(131, 12, 43)",
           "rgb(33, 25, 206)",
           "rgb(250, 8, 32)",
+          "rgb(131, 12, 43)",
+          "rgb(2, 15, 133)",
           "rgb(25, 215, 3)",
+          "rgb(10, 80, 205)",
         ],
         borderColor: "rgba(255, 255, 255)",
         borderWidth: 4,
@@ -33,6 +36,7 @@ export const AnalistCountProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsAnalistLoading(true);
       try {
         const res = await getIncident.getInfoData();
         let values = {};
@@ -62,6 +66,8 @@ export const AnalistCountProvider = ({ children }) => {
         }));
       } catch (e) {
         console.error(e);
+      } finally {
+        setIsAnalistLoading(false);
       }
     };
 
@@ -99,7 +105,7 @@ export const AnalistCountProvider = ({ children }) => {
   }, [theme]);
 
   return (
-    <AnalistCountContext.Provider value={{ adataValues: null, achartData, achartOptions }}>
+    <AnalistCountContext.Provider value={{ adataValues: null, achartData, achartOptions, isAnalistLoading }}>
       { children }
     </AnalistCountContext.Provider>
   )

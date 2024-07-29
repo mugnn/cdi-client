@@ -2,32 +2,43 @@ import { useEffect, useState } from "react";
 import submit_icon from "./assets/submit_icon.svg";
 import "../index.css";
 import GetIncident from "../../../services/GetIncidents";
+import { useToast } from "@chakra-ui/react";
 
 /* versão de visualização.
   - parte estética do componente será mantida.
 */
 const IncidentInfo = (props) => {
   const [hasReason, setHasReason] = useState(props.justificativa);
-  const [getButton, setGetButton] = useState('');
+  const [getButton, setGetButton] = useState("");
   const getIncident = new GetIncident();
+  const toast = useToast();
 
   useEffect(() => {
-    setGetButton(hasReason)
-  }, [hasReason])
+    setGetButton(hasReason);
+  }, [hasReason]);
 
   useEffect(() => {
-    setGetButton('')
-  }, [])
+    setGetButton("");
+  }, []);
 
-  const submitReason = async () => {
-    const data = {
-      inc: props.inc,
-      reason: hasReason
-    }
-    const payload = await getIncident.postReasonData(data)
-    if (payload.acknowledged) {
-      setGetButton('')
-    }
+  const submitReason = () => {
+    return new Promise(async (resolve, reject) => {
+      const data = {
+        inc: props.inc,
+        reason: hasReason,
+      };
+      try {
+        const payload = await getIncident.postReasonData(data);
+        if (payload) {
+          resolve(true);
+        } else {
+          reject(false);
+        }
+      } catch (error) {
+        console.error(error);
+        reject(false);
+      }
+    });
   };
 
   const formatISODate = (isoString) => {
@@ -79,7 +90,9 @@ const IncidentInfo = (props) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+    <div
+      style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+    >
       <div className="incident_info_component">
         <a className="incident_info_subbox" href={props.url}>
           {/* <div className="incident_info_subbox">{props.inc}</div> */}
@@ -166,12 +179,35 @@ const IncidentInfo = (props) => {
       </div>
       {(() => {
         if (getButton !== undefined && getButton.length > 0) {
-          return <img 
-            alt="submit_icon" 
-            src={submit_icon} 
-            id="__submit_icon" 
-            onClick={submitReason}
-          />;
+          return (
+            <img
+              alt="submit_icon"
+              src={submit_icon}
+              id="__submit_icon"
+              onClick={() => {
+                toast.promise(submitReason(), {
+                  success: {
+                    title: "Sucesso!",
+                    description: "Dados atualizados.",
+                    position: "top-right",
+                    duration: 2000,
+                  },
+                  error: {
+                    title: "Erro.",
+                    description: "Não foi possível atualizar os dados.",
+                    position: "top-right",
+                    duration: 2000,
+                  },
+                  loading: {
+                    title: "Carregando dados...",
+                    position: "top-right",
+                    duration: 2000,
+                  },
+                });
+                setGetButton("");
+              }}
+            />
+          );
         }
       })()}
     </div>

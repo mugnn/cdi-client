@@ -8,6 +8,7 @@ const IncidentsCountContext = createContext();
 export const IncidentsCountProvider = ({ children }) => {
   const { theme } = useTheme();
   const getIncident = new GetIncident();
+  const [isLoading, setIsLoading] = useState(true);
   const [dataValues, setDataValues] = useState([]);
   const [chartData, setChartData] = useState({
     labels: ["Novo", "Em andamento", "Em espera"],
@@ -83,6 +84,7 @@ export const IncidentsCountProvider = ({ children }) => {
     };
 
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const res = await getIncident.getData();
         const currentValues = [res[0].new, res[0].progress, res[0].pending];
@@ -105,6 +107,8 @@ export const IncidentsCountProvider = ({ children }) => {
         }
       } catch (e) {
         console.error(e);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -116,7 +120,7 @@ export const IncidentsCountProvider = ({ children }) => {
   }, []);
 
   return(
-    <IncidentsCountContext.Provider value={{ dataValues, chartData, chartOptions }}>
+    <IncidentsCountContext.Provider value={{ dataValues, chartData, chartOptions, isLoading }}>
       { children }
     </IncidentsCountContext.Provider>
   )

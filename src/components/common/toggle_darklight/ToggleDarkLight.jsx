@@ -5,7 +5,10 @@ import { useState } from "react";
 import { useTheme } from "../../../contexts/Theme/ThemeContext";
 
 const ToggleDarkLight = () => {
-  const [hide, setHide] = useState(false);
+  const [hide, setHide] = useState(() => {
+    const currentTheme = localStorage.getItem('theme_state')
+    return currentTheme === 'dark';
+  });
   const { toggleTheme } = useTheme();
 
   const toggle = () => {

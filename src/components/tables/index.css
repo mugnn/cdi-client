@@ -75,7 +75,7 @@
 
 .__justify_input {
   color: black;
-  width: 8.82vw;
+  width: 9vw;
 }
 
 .red {
@@ -100,6 +100,7 @@
 #__submit_icon {
   height: 2vmin;
   padding-left: 2vmin;
+  cursor: pointer;
 }
 
 #no_data_incident {
